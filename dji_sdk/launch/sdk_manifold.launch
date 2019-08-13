@@ -1,11 +1,16 @@
 <launch>
+    <arg name="fcu_port" default="/dev/ttyTHS2" />
+    <arg name="baud_rate" default="115200" />
+    <arg name="app_id" default="1030150" />
+	<arg name="enc_key" default="4adad5e0c10585bf76e0baa9190e8d2183c2498cb6081b62fa001ecca9278e23"/>
+
 	<node pkg="dji_sdk" type="dji_sdk_node" name="dji_sdk" output="screen">
 		<!-- node parameters -->
 		<param name="drone_version" type="string" value="M100"/>
-		<param name="serial_name" type="string" value="/dev/ttyTHS2"/>
-		<param name="baud_rate" type="int" value="115200"/>
-		<param name="app_id" type="int" value="1030150"/>
+		<param name="serial_name" type="string" value="$(arg fcu_port)"/>
+		<param name="baud_rate" type="int" value="$(arg baud_rate)"/>
+		<param name="app_id" type="int" value="$(arg app_id)"/>
 		<param name="app_version" type="int" value="1"/>
-		<param name="enc_key" type="string" value="4adad5e0c10585bf76e0baa9190e8d2183c2498cb6081b62fa001ecca9278e23"/>
+		<param name="enc_key" type="string" value="$(arg enc_key)"/>
 	</node>
 </launch>
